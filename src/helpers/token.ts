@@ -10,14 +10,14 @@ const jwtConfig = {
 export const generateToken = (user: Omit<IUser, 'password'>) => {
   const token = sign(
     user,
-    process.env.JWT_SECRET || 'secret',
+    process.env.JWT_SECRET  as Secret,
     jwtConfig as SignOptions,
   );
   return token;
 };
 
 export const authenticate = (token: string): JwtPayload => {
-  const decoded = verify(token, process.env.JWT_SECRET || 'secret' as Secret);
+  const decoded = verify(token, process.env.JWT_SECRET as Secret);
   console.log('decodeeed', decoded);
   
   return decoded as JwtPayload;
