@@ -1,7 +1,7 @@
 import { App } from './app';
 import 'dotenv/config';
 
-const RAILWAY_PORT = `0.0.0.0:${process.env.PORT}`;
+const RAILWAY_PORT = process.env.PORT as string;
 
 new App().start(RAILWAY_PORT);
 
